@@ -6,6 +6,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
+const data = require('./bin/seeds');
+
+// carpetas requerias
+
+const Celebrity = require('./models/Celebrity');
+
 const indexRouter = require('./routes/index');
 
 const app = express();
@@ -15,6 +21,16 @@ mongoose.connect('mongodb://localhost/movies', {
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
 });
+
+// // Instertar pelis
+// Celebrity.insertMany(data)
+//   .then(result => {
+//     console.log(result);
+//     mongoose.connection.close();
+//   })
+//   .catch(err => {
+//     next(err);
+//   });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
