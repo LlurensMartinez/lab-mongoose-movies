@@ -13,6 +13,8 @@ const data = require('./bin/seeds');
 const Celebrity = require('./models/Celebrity');
 
 const indexRouter = require('./routes/index');
+// Añadir ruta para las celebridades
+const celebritiesRouter = require('./routes/celebrities');
 
 const app = express();
 
@@ -43,6 +45,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+// usar ruta para las celebridades
+app.use('/celebrities', celebritiesRouter);
 
 // -- 404 and error handler
 
